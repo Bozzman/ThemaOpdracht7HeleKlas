@@ -1,7 +1,7 @@
 #include "Image.h"
 
 /*
-Constructor
+Empty constructor
 */
 Image::Image() {
 	image = new CImage();
@@ -10,6 +10,9 @@ Image::Image() {
 	bpp = 0;
 }
 
+/*
+Constructor with path to image file
+*/
 Image::Image(std::string inputName) {
 	image = new CImage();
 	fileName = inputName;
@@ -17,6 +20,9 @@ Image::Image(std::string inputName) {
 	LoadFromCImage();
 }
 
+/*
+Copy constructor
+*/
 Image::Image(Image &img) {
 	width = img.width;
 	height = img.height;
@@ -30,6 +36,9 @@ Image::Image(Image &img) {
 	image->Create(width, height, bpp);
 }
 
+/*
+Destructor
+*/
 Image::~Image() {
 	delete image;
 	delete[] pixel;
@@ -43,12 +52,19 @@ Image::~Image() {
 Public functions
 */
 
+
+/*
+Load a file
+*/
 void Image::LoadImageFromFile(std::string inputName) {
 	fileName = inputName;
 	image->Load(_T((inputLocation + fileName).c_str()));
 	LoadFromCImage();
 }
 
+/*
+Save an image to a file
+*/
 void Image::SaveImageToFile(std::string prefixName) {
 	int R = 0, G = 0, B = 0, A = 0, currentPixel;
 
@@ -77,6 +93,7 @@ void Image::SaveImageToFile(std::string prefixName) {
 
 /*
 Private functions
+Load an image from CImage
 Array pixel[x + (y * width)]
 */
 void Image::LoadFromCImage() {

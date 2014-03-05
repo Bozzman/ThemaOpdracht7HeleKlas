@@ -16,8 +16,10 @@ int main(int argc, char** argv) {
 //	std::string inputName = "Busjes.jpg";
 //	std::string inputName = "BusjesGroot.jpg";
 	std::string inputName = "Waterfall.jpg";
+	
 
 	bool grayOn = true;
+	
 
 	/*=========================     Program parameters     =========================*/
 
@@ -49,8 +51,7 @@ int main(int argc, char** argv) {
 
 	//End program
 	std::cout << "Program ended, Press a key to continue\n";
-	double m;
-	std::cin >> m;
+	std::cin.ignore();
 	return 0;
 }
 
